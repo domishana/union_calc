@@ -1,6 +1,7 @@
 # coding=utf-8
 import scipy.special as scsp
 import itertools
+import clothes
 
 
 def list_product(int_list):
@@ -52,9 +53,9 @@ def idol_camera(pr, fa, an):
 
 def idol_order(pr, fa, an):
     order = 1
-    pr_list = list(itertools.combinations(Princess, pr))
-    fa_list = list(itertools.combinations(Fairy, fa))
-    an_list = list(itertools.combinations(Angel, an))
+    pr_list = list(itertools.combinations(clothes.Princess, pr))
+    fa_list = list(itertools.combinations(clothes.Fairy, fa))
+    an_list = list(itertools.combinations(clothes.Angel, an))
 
     order *= list_product_sum(pr_list) * list_product_sum(fa_list) * list_product_sum(an_list) * scsp.perm(5, 5, True)
     return order
@@ -79,10 +80,6 @@ def idol_all_pattern_sub(pr, fa, an):
     print("Pr:{0}, Fa:{1}, An:{2}, {3:21d}, {4:20d}, {5:20d}".format(pr, fa, an, cmr, ord, cmr * ord))
     return cmr * ord
 
-
-Princess = [12, 13, 13, 11, 9, 9, 10, 11, 11, 9, 13, 11, 9, 10, 11, 10, 12]
-Fairy = [9, 9, 11, 12, 9, 11, 10, 9, 9, 9, 11, 11, 12, 13, 13, 11, 10]
-Angel = [13, 10, 10, 10, 13, 10, 12, 11, 9, 10, 12, 10, 11, 11, 11, 11, 9, 10]
 
 if __name__ == '__main__':
     print("Pr: , Fa: , An: ,カメラワークのパターン,     アイドルの並べ方,     組み合わせの総数")
